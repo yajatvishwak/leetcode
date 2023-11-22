@@ -1,5 +1,6 @@
 # Problem
-[https://leetcode.com/problems/valid-anagram/](https://leetcode.com/problems/maximum-subarray/)
+https://leetcode.com/problems/maximum-subarray/description/
+
 
 Given an integer array nums, find the subarray with the largest sum, and return its sum.
 
@@ -30,18 +31,16 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 
 # Intuition
 <!-- Describe your first thoughts on how to solve this problem. -->
-- Create 2 dicts with {char:count} for both the inputstrings
-- Loop and check if both dict have same count value for each char
-- Return false if not both the strings do not have the same length, because then 100000000% they are not anagrams
+- find out each possible combination
+- sum its values and keep a record of max sum
 
 # Approach
 <!-- Describe your approach to solving the problem. -->
-1. declare 2 dicts
-2. check length of the two strings, chuck false if they are not same
-3. ~~loop through each string and construct the dicts~~ you have already validated that the strings are going to be of the same length, so just loop through one string, and add each char to the dict based on index as the key and the value will be one increment of it's previous value, so `dict[s[i]] = dict.get(s, 0) + 1` 
-4. loop through one of the constructed dict and ~~check if each key exists in both the dicts~~ check if key present in the other dict and also that the value of the key in both the dicts are equal (checking if the count for the char is same)
-5. if above conditions fail even for one iteration, return false
-6. if above conditions pass will not even one fail, return true
+1. set max to inf
+2. loop through each element - `i` to `n`
+3. inner loop through each element starting from `i` to `n`
+4. update m to be the max of itself or sum(from i to j+1)
+5. return m
 
 # Complexity
 - Time complexity: O(n2) vvvvvvv bad
